@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: rest_logs
+#
+#  id              :bigint           not null, primary key
+#  activity_log_id :bigint           not null
+#  start_at        :datetime
+#  end_at          :datetime
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
+one:
+  activity_log: one
+  start_at: 2021-06-28 22:56:31
+  end_at: 2021-06-28 22:56:31
+
+two:
+  activity_log: two
+  start_at: 2021-06-28 22:56:31
+  end_at: 2021-06-28 22:56:31
