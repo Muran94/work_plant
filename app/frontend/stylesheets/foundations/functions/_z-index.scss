@@ -1,0 +1,7 @@
+@function z-index($name) {
+  @if map-has-key($z-index, $name) {
+    @return map-get($z-index, $name);
+  } @else {
+    @error "Z-Index named #{$z-index} is not defined in $z-index.";
+  }
+}

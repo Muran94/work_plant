@@ -1,0 +1,4 @@
+- content_for :local_header do
+  案件追加
+
+= render "form", client_form: @client_form, request_url: clients_path, request_method: :post

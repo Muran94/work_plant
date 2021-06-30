@@ -1,0 +1,7 @@
+@function space($size: m) {
+  @if map-has-key($spaces, $size) {
+    @return map-get($spaces, $size);
+  } @else {
+    @error "Space #{$size} is not defined in $spaces.";
+  }
+}

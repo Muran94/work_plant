@@ -1,0 +1,31 @@
+= render layout: "partial_layouts/local_header" do
+  .u-py-m
+    %h1.l-local-header__heading.u-mb-w
+      本日の稼働実績
+
+    .p-activity-summaries.u-mb-w
+      .p-activity-summary
+        .p-activity-summary-label 本日の総稼働時間
+        .p-activity-summary-value= format_seconds_to_hour_min(@todays_total_activity_seconds)
+
+      .p-activity-summary
+        .p-activity-summary-label 本日の報酬(税込)
+        .p-activity-summary-value= format_payment(@todays_total_payment_including_tax)
+
+    = link_to "稼働履歴", "#", class: "c-button c-button--outline c-button--black"
+
+.l-section
+  .l-section__header
+    .l-section__header-container.l-container
+      .l-section__heading 案件一覧
+      .l-section__actions
+        = link_to new_client_path, class: "c-button c-button--black c-button--small c-button--outline" do
+          %span.material-icons.c-button__icon add_circle_outline
+          案件を追加
+
+  .l-section__body.p-clients
+    .l-container
+      - if @clients.present?
+        = render @clients
+      - else
+        まだ案件が登録されていません。

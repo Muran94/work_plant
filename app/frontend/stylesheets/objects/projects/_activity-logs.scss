@@ -1,0 +1,18 @@
+// tableタグの使用を前提とする。
+.p-activity-logs {
+  // Display
+  display: table;
+}
+
+.p-activity-log + .p-activity-log {
+  // Border
+  border-top: 1px solid achromatic-color(extra-light-gray);
+}
+
+.p-activity-log {
+  // Display
+  display: table-cell;
+
+  // Spacing
+  padding: space();
+}

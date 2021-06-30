@@ -1,0 +1,7 @@
+= link_to edit_client_activity_log_path(client, activity_log), class: "c-table__row c-table__row--linked" do
+  .c-table__cell
+    = l(activity_log.started_at.to_date, format: :short)
+  .c-table__cell
+    = format_seconds_to_hour_min(activity_log.total_activity_seconds)
+  .c-table__cell.u-text-align-right
+    = format_payment(activity_log.payment_including_tax)

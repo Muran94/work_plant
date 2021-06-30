@@ -1,0 +1,7 @@
+@function font-size($size: m) {
+  @if map-has-key($font-sizes, $size) {
+    @return map-get($font-sizes, $size);
+  } @else {
+    @error "Font size #{$size} is not defined in $font-sizes.";
+  }
+}

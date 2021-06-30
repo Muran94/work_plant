@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:11.5-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db_volume:/var/lib/postgresql/data:cached
+
+  web:
+    image: &web_image ${APP_NAME}_web:latest
+    build:
+      context: .
+      target: app-for-development-and-test
+      args:
+        bundle_without: production
+    command: sh -c "rm -f tmp/pids/server.pid && rails server -p 3000 -b '0.0.0.0'"
+    env_file:
+      - .env
+    volumes: &web_volumes
+      - .:/${APP_NAME}:cached
+      - gem_volume:/usr/local/bundle
+      - node_module_volume:/${APP_NAME}/node_modules
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+
+  webpacker:
+    image: *web_image
+    command: ./bin/webpack-dev-server
+    volumes: *web_volumes
+    ports:
+      - 3035:3035
+    depends_on:
+      - web
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis_volume:/data:cached
+    ports:
+      - 6379:6379
+
+  sidekiq:
+    image: *web_image
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    env_file:
+      .env
+    volumes: *web_volumes
+    depends_on:
+      - db
+      - redis
+
+  minio:
+    image: minio/minio:latest
+    entrypoint: sh
+    command: >
+      -c "mkdir -p /data/${MINIO_BUCKET_FOR_DEVELOPMENT} &&
+          mkdir -p /data/${MINIO_BUCKET_FOR_TEST} &&
+          minio server --console-address :${MINIO_CONSOLE_PORT} /data"
+    env_file:
+      - .env
+    volumes:
+      - minio_volume:/data:cached
+    ports:
+      - 9000:9000
+      - 9001:9001
+
+volumes:
+  db_volume:
+  gem_volume:
+  redis_volume:
+  minio_volume:
+  node_module_volume:

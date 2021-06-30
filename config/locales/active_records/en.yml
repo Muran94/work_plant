@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    models:
+      client: Client
+      user: User
+    attributes:
+      client:
+        name: Client Name
+      user:
+        current_password: Current Password
+        email: Email Address
+        password: Password
+        password_confirmation: Password Confirmation
+        remember_me: Remember Me
+  # 全モデル共通の属性
+  attributes:
+    created_at: Created at
+    updated_at: Updated at

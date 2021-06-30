@@ -1,0 +1,12 @@
+.u-font {
+  &-size {
+    @each $name, $value in $font-sizes {
+      &-#{$name} { font-size: $value; }
+    }
+  }
+
+  &-weight {
+    &-bold   { font-weight: bold !important; }
+    &-normal { font-weight: normal !important; }
+  }
+}

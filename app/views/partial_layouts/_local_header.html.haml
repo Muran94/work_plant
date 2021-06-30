@@ -1,0 +1,7 @@
+-# ==== 引数
+-# * +additional_class_attributes+ - .l-local-header要素に対して追加で指定するクラス属性の値を配列で渡す。
+- additional_class_attributes ||= []
+
+.l-local-header{ class: additional_class_attributes.join(" ") }
+  .l-local-header__container
+    = yield

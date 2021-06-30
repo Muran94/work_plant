@@ -1,0 +1,17 @@
+.l-pane {
+  // Scroll
+  overflow-y: scroll;
+
+  // Sizing
+  height: 100vh;
+
+  &--left {
+    // Flexbox
+    width: size(width, sidebar);
+  }
+
+  &--right {
+    // Flexbox
+    flex: 1;
+  }
+}

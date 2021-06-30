@@ -1,0 +1,7 @@
+@function opacity($key-name: normal) {
+  @if map-has-key($opacities, $key-name) {
+    @return map-get($opacities, $key-name);
+  } @else {
+    @error "Opacity with key named #{$key-name} is not defined in $opacities.";
+  }
+}

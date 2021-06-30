@@ -1,0 +1,34 @@
+.l-section {
+  // Flexbox
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    // Flexbox
+    align-items: center;
+    display: flex;
+
+    // Sizing
+    height: size(height, section-header);
+
+    &-container {
+      // Flexbox
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      // Sizing
+      height: size(height, section-header);
+    }
+  }
+
+  &__body {
+    // Color
+    background: achromatic-color(white);
+
+    // Spacing
+    padding-top: space(w);
+    padding-bottom: space(w);
+  }
+}

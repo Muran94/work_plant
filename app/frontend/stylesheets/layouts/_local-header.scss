@@ -1,0 +1,54 @@
+@import "./grid"; 
+ 
+.l-local-header {
+  // Color
+  background: theme-color(primary);
+  color: text-color(black);
+
+
+  &__container {
+    @extend .l-container;
+
+    // Spacing
+    padding-top: space();
+    padding-bottom: space();
+  }
+
+  &__heading {
+    // Flexbox
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    // Font & Text
+    font-size: font-size(l);
+
+    &::after {
+      content: '';
+
+      // Border
+      border-radius: 2.5px;
+
+      // Color
+      background: background-color(black);
+
+      // Sizing
+      height: 2.5px;
+      width: 80px;
+
+      // Spacing
+      margin-top: space();
+    }
+  }
+
+  &--black {
+    // Color
+    background: achromatic-color(black);
+    color: text-color(white);
+
+    .l-local-header__heading::after {
+      // Color
+      background: background-color(white);
+    }
+  }
+}

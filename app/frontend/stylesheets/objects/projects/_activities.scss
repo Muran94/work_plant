@@ -1,0 +1,38 @@
+.p-activity-summaries {
+  // Flexbox
+  align-items: center;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.p-activity-summary + .p-activity-summary {
+  // Spacing
+  margin-left: space();
+}
+
+.p-activity-summary {
+  // Color
+  background: rgba(#fff, 0.85);
+
+  // Flexbox
+  align-items: center;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  justify-content: center;
+
+  // Spacing
+  padding: space() 0;
+
+  &-label {
+    // Font & Text
+    font-size: font-size(xs);
+  }
+
+  &-value {
+    // Spacing
+    margin-top: space(n);
+  }
+}

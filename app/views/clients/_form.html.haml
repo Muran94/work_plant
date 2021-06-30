@@ -1,0 +1,28 @@
+- client   = client_form.client
+- contract = client_form.contract 
+ 
+.l-section
+  .l-section__body
+    .l-container
+      = form_with(model: client_form, url: request_url, method: request_method, local: true) do |f|
+        = f.fields_for client do |ff|
+          .c-form__field
+            = ff.label :name, class: "c-form__field-label c-form__field-label--required"
+            = ff.text_field :name, placeholder: "xxxx株式会社", class: "c-form__field-input"
+
+          .c-form__field.c-form__field--image-file
+            %label.c-form__field-label.c-form__field-label--optional= Client.human_attribute_name(:logo)
+            = ff.label :logo, class: "c-form__field-image-selector" do
+              = ff.file_field :logo, class: "c-form__field-input"
+              %img.c-form__field-image-preview{ src: client.logo.present? ? client.logo_url : "" }
+              .c-form__field-image-selector-label
+                %span.material-icons add_a_photo
+                .c-button.c-button--small.c-button--outline.c-button--dark-gray 画像をアップロード
+
+        = f.fields_for contract do |ff|
+          .c-form__field
+            = ff.label :hourly_payment, class: "c-form__field-label c-form__field-label--optional"
+            = ff.number_field :hourly_payment, placeholder: "3000", class: "c-form__field-input"
+
+        .c-form__field
+          = f.submit class: "c-button c-button--primary"

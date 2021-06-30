@@ -1,0 +1,7 @@
+@function border-radius($round-amount: normal) {
+  @if map-has-key($border-radius-list, $round_amount) {
+    @return map-get($border-radius-list, $round-amount);
+  } @else {
+    @error "Border radius with round amount #{$round-amountlevel} is not defined in $border-radius-list.";
+  }
+}

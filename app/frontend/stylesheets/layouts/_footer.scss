@@ -1,0 +1,35 @@
+.l-footer {
+  // Color
+  background: background-color(extra-dark-gray);
+  color: text-color(light-gray);
+
+  // Spacing
+  margin-top: auto;
+  padding: space() 0;
+
+  &__container {
+    @extend .l-container;
+  }
+
+  &__nav {
+    // Flexbox
+    display: flex;
+    flex-direction: row;
+
+    // Spacing
+    margin-top: space();
+
+    &-item + &-item {
+      // Spacing
+      margin-left: space();
+    }
+
+    &-item {
+      // Color
+      color: text-color(light-gray);
+
+      // Font & Text
+      font-size: font-size(s);
+    }
+  }
+}

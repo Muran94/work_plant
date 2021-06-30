@@ -1,0 +1,17 @@
+@function size($type, $name) {
+  @if $type == "height" {
+    @if map-has-key($heights, $name) {
+      @return map-get($heights, $name);
+    } @else {
+      @error "Height named #{$name} is not defined in $heights.";
+    }
+  } @else if $type == "width" {
+    @if map-has-key($widths, $name) {
+      @return map-get($widths, $name);
+    } @else {
+      @error "Width named #{$name} is not defined in $widths.";
+    }
+  } @else {
+    @error "$type must be either 'height' or 'width'.";
+  }
+}

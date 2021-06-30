@@ -1,0 +1,24 @@
+.p-client
+  .p-client__header
+    .p-client__info
+      .p-client__logo= image_tag(client.logo_url(:thumbnail), class: "p-client__logo")
+      .p-client__name= client.name
+    .p-client__actions
+      = link_to edit_client_path(client), class: "p-client__action" do
+        %span.material-icons settings
+
+
+  - if client.contract_expired?
+    .p-client__contract-expired
+      契約終了
+  - else
+    .p-client__activity-infos
+      .p-client__activity-info
+        .p-client__activity-info-label 本日の総稼働時間
+        .p-client__activity-info-value= format_seconds_to_hour_min(client.todays_total_activity_seconds)
+
+      .p-client__activity-info
+        .p-client__activity-info-label 本日の報酬(税込)
+        .p-client__activity-info-value= format_payment(client.todays_total_payment)
+
+    = link_to "稼働記録へ", client_path(client), class: "c-button c-button--primary"

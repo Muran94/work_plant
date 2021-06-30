@@ -1,5 +1,3 @@
-User.find_or_create_by!(email: "sample@example.com") do |record|
-  record.first_name = "健"
-  record.last_name  = "村上"
+User.find_or_create_by!(email: "headiv94@gmail.com") do |record|
   record.password   = "password"
 end

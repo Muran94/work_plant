@@ -1,0 +1,4 @@
+.u-bg-color {
+  &-primary { background-color: theme-color(primary); }
+  &-black   { background-color: achromatic-color(black); }
+}

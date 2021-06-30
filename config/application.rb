@@ -8,16 +8,25 @@ Bundler.require(*Rails.groups)
 
 module App
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    config.i18n.load_path += Dir.glob(Rails.root.join("config", "locales", "**", "*.{rb,yml}"))
+    config.i18n.default_locale = :ja
+    config.time_zone = "Asia/Tokyo"
+    config.paths.add 'lib', eager_load: true
+    config.active_job.queue_adapter = :sidekiq
 
-    # Configuration for the application, engines, and railties goes here.
-    #
-    # These settings can be overridden in specific environments using the files
-    # in config/environments, which are processed later.
-    #
-    # config.time_zone = "Central Time (US & Canada)"
-    config.paths.add 'lib', eager_load: true #これを追加
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.generators do |g|
+      g.assets false
+      g.helpers false
+      g.skip_routes false
+      g.test_framework :rspec,
+        controller_specs: false,
+        fixtures:         false,
+        helper_specs:     false,
+        model_specs:      true,
+        request_spec:     true,
+        routing_specs:    false,
+        view_specs:       false
+    end
   end
 end

@@ -1,0 +1,11 @@
+.l-local-sidebar {
+  // Flexbox
+  flex: 1;
+
+  &__container {
+    @extend .l-container;
+
+    // Spacing
+    padding: 0;
+  }
+}

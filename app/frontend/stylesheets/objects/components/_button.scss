@@ -1,0 +1,117 @@
+.c-buttons {
+  // Flexbox
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .c-button--expanded {
+    flex: 1;
+  }
+
+  .c-button + .c-button {
+    // Spacing
+    margin-left: space();
+  }
+}
+
+.c-button {
+  // Border
+  border: 1px solid achromatic-color(extra-light-gray);
+  border-radius: border-radius();
+
+  // Cursor
+  cursor: pointer;
+  user-select: none;
+
+  // Color
+  background: achromatic-color(extra-light-gray);
+  color: text-color(black);
+
+  // Flexbox
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  // Sizing
+  box-sizing: border-box;
+  height: 36px;
+
+  // Spacing
+  padding: 0 space();
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__icon {
+    // Font & Text
+    font-size: font-size();
+
+    // Position
+    transform: translateY(1px);
+
+    // Spacing
+    margin-right: space(xn);
+    
+  }
+
+  // Color Variations
+  &--primary {
+    // Border
+    border-color: theme-color(primary);
+
+    // Color
+    background: theme-color(primary);
+  }
+
+  &--dark-gray {
+    // Border
+    border-color: achromatic-color(dark-gray);
+
+    // Color
+    background: achromatic-color(dark-gray);
+    color: achromatic-color(white);
+  }
+
+  &--black {
+    // Border
+    border-color: achromatic-color(black);
+
+    // Color
+    background: achromatic-color(black);
+    color: achromatic-color(white);
+  }
+
+  &--outline {
+    // Color
+    background: transparent;
+    color: achromatic-color(extra-light-gray);
+
+    &.c-button--primary {
+      // Color
+      color: theme-color(primary);
+    }
+
+    &.c-button--dark-gray {
+      // Color
+      color: achromatic-color(dark-gray);
+    }
+
+    &.c-button--black {
+      // Color
+      color: achromatic-color(black);
+    }
+  }
+
+  // Size Variations
+  &--expanded {
+    // Flexbox
+    flex: 1;
+  }
+
+  &--small {
+    // Sizing
+    height: 30px;
+  }
+}

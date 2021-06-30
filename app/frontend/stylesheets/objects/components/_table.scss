@@ -1,0 +1,72 @@
+.c-table {
+  // Border
+  border-collapse: collapse;
+
+  // Display
+  display: table;
+  
+  // Sizing
+  width: 100%;
+
+  // Table
+  table-layout: fixed;
+
+  &__head, &__body {
+    // Border
+    border-collapse: collapse;
+
+    // Display
+    display: table;
+    
+    // Sizing
+    width: 100%;
+
+    // Table
+    table-layout: fixed;
+  }
+
+  &__head {
+    // Color
+    color: achromatic-color(gray);
+
+    // Font & Text
+    font-size: font-size(s);
+  }
+
+  &__body {
+    // Display
+    display: table;
+    
+    // Sizing
+    width: 100%;
+
+    // Table
+    table-layout: fixed;
+
+    .c-table__row {
+      // Border
+      border-top: 1px solid achromatic-color(extra-light-gray);
+    }
+  }
+
+  &__row {
+    // Display
+    display: table-row;
+
+    &--linked:hover {
+      // Animation
+      transition: all 0.2s;
+
+      // Color
+      opacity: 0.75;
+    }
+  }
+
+  &__cell {
+    // Display
+    display: table-cell;
+
+    // Spacing
+    padding: space();
+  }
+}

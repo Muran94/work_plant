@@ -1,0 +1,66 @@
+= render layout: "partial_layouts/local_header", locals: { additional_class_attributes: %w[l-local-header--black] } do
+  .u-py-m
+    - case @client.current_activity_status
+    - when :operating
+      .p-activity-status.p-activity-status--off
+        稼働中
+      .c-buttons
+        = link_to "休憩する", start_client_activity_log_rest_logs_path(@client, @activity_log_currently_operating), method: :post, class: "c-button c-button--outline c-button--expanded"
+        = link_to "稼働終了する", finish_client_activity_log_path(@client, @activity_log_currently_operating), method: :patch, class: "c-button c-button--primary c-button--expanded"
+    - when :resting
+      .p-activity-status.p-activity-status--off
+        休憩中
+      .c-buttons
+        = link_to "休憩終了する", finish_client_activity_log_rest_log_path(@client, @activity_log_currently_operating, @rest_log_currently_resting), method: :patch, class: "c-button c-button--expanded"
+        = link_to "稼働終了する", finish_client_activity_log_path(@client, @activity_log_currently_operating), method: :patch, class: "c-button c-button--primary c-button--expanded"
+    - when :off
+      .p-activity-status.p-activity-status--off
+        無稼働
+      .c-buttons
+        = link_to "稼働開始する", start_client_activity_logs_path(@client), method: :post, class: "c-button c-button--primary c-button--outline c-button--expanded"
+
+
+= render layout: "partial_layouts/local_header" do
+  .u-py-m
+    %h1.l-local-header__heading.u-mb-w
+      これまでの稼働実績
+
+    .p-activity-summaries.u-mb-w
+      .p-activity-summary
+        .p-activity-summary-label 本日の総稼働時間
+        .p-activity-summary-value= format_seconds_to_hour_min(@todays_total_activity_seconds)
+
+      .p-activity-summary
+        .p-activity-summary-label 本日の報酬(税込)
+        .p-activity-summary-value= format_payment(@todays_total_payment_including_tax)
+
+    .p-activity-summaries.u-mb-w
+      .p-activity-summary
+        .p-activity-summary-label 今月の総稼働時間
+        .p-activity-summary-value= format_seconds_to_hour_min(@todays_total_activity_seconds)
+
+      .p-activity-summary
+        .p-activity-summary-label 今月の報酬(税込)
+        .p-activity-summary-value= format_payment(@todays_total_payment_including_tax)
+
+.l-section
+  .l-section__header
+    .l-section__header-container.l-container
+      稼働履歴
+
+      = link_to new_client_activity_log_path(@client), class: "c-button c-button--black c-button--outline c-button--small" do
+        %span.material-icons.c-button__icon add_circle_outline
+        稼働を登録する
+  
+  .l-section__body.u-py-none
+    .l-container.u-px-none
+      .c-table
+        .c-table__head
+          .c-table__row
+            .c-table__cell 日付
+            .c-table__cell 稼働時間
+            .c-table__cell.u-text-align-right 報酬(税込)
+        .c-table__body
+          = render @activity_logs, client: @client
+
+

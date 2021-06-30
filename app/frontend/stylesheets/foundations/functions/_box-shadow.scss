@@ -1,0 +1,7 @@
+@function box-shadow($level: normal) {
+  @if map-has-key($box-shadows, $level) {
+    @return map-get($box-shadows, $level);
+  } @else {
+    @error "Box shadow with a level #{$level} is not defined in $box-shadows.";
+  }
+}

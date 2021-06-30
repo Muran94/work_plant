@@ -1,0 +1,141 @@
+.p-clients {
+  // Color
+  background: background-color(extra-light-gray);
+
+  // Spacing
+  padding: space(none);
+}
+
+.p-client + .p-client {
+  // Spacing
+  margin-top: space();
+}
+
+.p-client {
+  // Color
+  background: background-color(white);
+
+  // Spacing
+  padding: space(w) space();
+  margin-left: -(space());
+  margin-right: -(space());
+
+  @include media-breakpoint-up(md) {
+    // Spacing
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__header {
+    // Flexbox
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    // Spacing
+    margin-bottom: space(w);
+  }
+
+  &__info {
+    // Flexbox
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__logo {
+    // Border
+    border-radius: border-radius();
+
+    // Object
+    object-fit: cover;
+
+    // Sizing
+    height: 36px;
+    width: 36px;
+
+    &--large {
+      // Sizing
+      height: 100px;
+      width: 100px;
+    }
+  }
+
+  &__name {
+    // Spacing
+    margin-left: space();
+  }
+
+  &__actions {
+    // Color
+    color: text-color(dark-gray);
+
+    // Flexbox
+    align-items: center;
+    display: flex;
+  }
+
+  &__action {
+    // Flexbox
+    align-items: center;
+    display: flex;
+  }
+
+  &__activity-infos {
+    // Flexbox
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    // Spacing
+    margin-bottom: space(w);
+  }
+
+  &__activity-info + &__activity-info {
+    // Spacing
+    margin-left: space();
+  }
+
+  &__activity-info {
+    // Color
+    background: background-color(extra-light-gray);
+
+    // Flexbox
+    align-items: center;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    justify-content: center;
+
+    // Spacing
+    padding: space() 0;
+
+    &-label {
+      // Font & Text
+      font-size: font-size(xs);
+    }
+
+    &-value {
+      // Spacing
+      margin-top: space(n);
+    }
+  }
+
+  &__contract-expired {
+    // Color
+    background: background-color(extra-light-gray);
+    color: text-color(dark-gray);
+
+    // Flexbox
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    // Font & Text
+    font-size: font-size(l);
+
+    // Spacing
+    padding: space(w) 0;
+  }
+}

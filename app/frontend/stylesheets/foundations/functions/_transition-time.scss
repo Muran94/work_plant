@@ -1,0 +1,7 @@
+@function transition-time($key: normal) {
+  @if map-has-key($transition-times, $key) {
+    @return map-get($transition-times, $key);
+  } @else {
+    @error "Key: #{$key} is not defined in $transition-times.";
+  }
+}

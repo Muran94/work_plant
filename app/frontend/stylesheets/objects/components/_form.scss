@@ -1,0 +1,155 @@
+.c-form {
+  &__field + &__field {
+    // Spacing
+    margin-top: space(w);
+  }
+
+  &__field {
+    // Flexbox
+    display: flex;
+    flex-direction: column;
+
+    &-label {
+      // Flexbox
+      align-items: center;
+      display: flex;
+
+      // Font
+      font-size: font-size(xs);
+
+      // Spacing
+      margin-bottom: space(xn);
+
+      &::after {
+        content: '';
+
+        // Color
+        background: background-color(extra-light-gray);
+
+        // Display
+        display: none;
+
+        // Flexbox
+        align-items: center;
+        justify-content: center;
+
+        // Font & Text
+        font-size: font-size(xs);
+        line-height: 1;
+
+        // Spacing
+        margin-left: space(xn);
+        padding: space(xxn);
+      }
+
+      &--required::after {
+        content: '必須';
+
+        // Color
+        background: functional-color(alert);
+        color: text-color(white);
+
+        // Flexbox
+        display: flex;
+      }
+
+      &--optional::after {
+        content: '任意';
+
+        // Color
+        background: background-color(light-gray);
+        color: text-color(white);
+
+        // Flexbox
+        display: flex;
+      }
+    }
+
+    &-input {
+      // Border
+      border: 1px solid border-color(light-gray);
+      border-radius: border-radius();
+
+      // Sizing
+      height: size(height, input);
+
+      // Spacing
+      padding: 0 space(n);
+
+      &::placeholder {
+        // Color
+        color: text-color(light-gray);
+      }
+    }
+
+    &-image-selector {
+      // Cursor
+      cursor: pointer;
+
+      // Color
+      background: background-color(extra-light-gray);
+
+      // Flexbox
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      // Spacing
+      padding: space(xw) 0;
+
+      &-label {
+        // Color
+        color: text-color(dark-gray);
+        user-select: none;
+
+        // Flexbox
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .material-icons {
+          // Font & Text
+          font-size: font-size(xxl);
+
+          // Spacing
+          margin-bottom: space(xn);
+        }
+      }
+    }
+
+    &-image-preview {
+      // Border
+      border-radius: border-radius();
+
+      // Display
+      display: none;
+
+      // Object
+      object-fit: cover;
+
+      // Sizing
+      height: 100px;
+      width: 100px;
+
+      &:not([src=""]) {
+        // Display
+        display: block;
+      }
+    }
+
+    &-image-preview:not([src=""]) + .c-form__field-image-selector-label {
+      display: none;
+    }
+
+    // Elements
+
+    // Modifier
+    &--image-file {
+      input[type="file"] {
+        display: none;
+      }
+    }
+  }
+}

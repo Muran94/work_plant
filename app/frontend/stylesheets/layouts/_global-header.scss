@@ -1,0 +1,45 @@
+.l-global-header {
+  // Color
+  background: transparent;
+
+  // Flexbox
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  // Sizing
+  height: size(height, global-header);
+  width: 100%;
+
+  &__container {
+    @extend .l-container;
+
+    // Flexbox
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .c-logo {
+    // Font
+    font-size: 20px;
+  }
+
+  &__nav {
+    // Flexbox
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+    &-item + &-item {
+      // Flexbox
+      align-items: center;
+      display: flex;
+
+      // Spacing
+      margin-left: space();
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.l-main {
+  // Flexbox
+  flex: 3;
+
+  &__container {
+    @extend .l-container;
+
+    // Spacing
+    padding: 0;
+  }
+
+  &--narrow {
+    // Sizing
+    max-width: 500px;
+  }
+}

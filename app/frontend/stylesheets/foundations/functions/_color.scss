@@ -1,0 +1,70 @@
+// テーマ色
+@function theme-color($name) {
+  @if map-has-key($theme-colors, $name) {
+    @return map-get($theme-colors, $name);
+  } @else {
+    @error "Theme color named #{$name} is not defined in $theme-colors.";
+  }
+}
+
+// 有彩色
+@function chromatic-color($name) {
+  @if map-has-key($chromatic-colors, $name) {
+    @return map-get($chromatic-colors, $name);
+  } @else {
+    @error "Chromatic color named #{$name} is not defined in $chromatic-colors.";
+  }
+}
+
+// 無彩色
+@function achromatic-color($name) {
+  @if map-has-key($achromatic-colors, $name) {
+    @return map-get($achromatic-colors, $name);
+  } @else {
+    @error "Achromatic Color named #{$name} is not defined in $achromatic-colors.";
+  }
+}
+
+// 背景色
+@function background-color($name) {
+  @if map-has-key($background-colors, $name) {
+    @return map-get($background-colors, $name);
+  } @else {
+    @error "Background color named #{$name} is not defined in $background-colors.";
+  }
+}
+
+// テキスト色
+@function text-color($name) {
+  @if map-has-key($text-colors, $name) {
+    @return map-get($text-colors, $name);
+  } @else {
+    @error "Text color named #{$name} is not defined in $text-colors.";
+  }
+}
+
+// ボーダー色
+@function border-color($name: light-gray) {
+  @if map-has-key($border-colors, $name) {
+    @return map-get($border-colors, $name);
+  } @else {
+    @error "Border color named #{$name} is not defined in $border-colors.";
+  }
+}
+
+// 機能色
+@function functional-color($name) {
+  @if map-has-key($functional-colors, $name) {
+    @return map-get($functional-colors, $name);
+  } @else {
+    @error "Functional color named #{$name} is not defined in $functional-colors.";
+  }
+}
+
+@function other-color($name) {
+  @if map-has-key($other-colors, $name) {
+    @return map-get($other-colors, $name);
+  } @else {
+    @error "Color named #{$name} is not defined in $colors.";
+  }
+}

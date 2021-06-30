@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title App
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .l-wrapper
+      .l-global-header
+        .l-global-header__container
+          = link_to "お仕事ロガー", root_path, class: "c-logo"
+          
+          .l-global-header__nav
+            - if user_signed_in?
+              = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "l-global-header__nav-item"
+            - else
+              = link_to "ログイン", new_user_session_path, class: "l-global-header__nav-item"
+              = link_to "会員登録", new_user_registration_path, class: "l-global-header__nav-item c-button c-button--black"
+
+      .l-main
+        = yield
+      .l-footer

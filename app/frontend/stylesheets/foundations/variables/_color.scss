@@ -1,0 +1,74 @@
+@import "../functions/color";
+
+// テーマ色
+$theme-colors: (
+  primary:       #FFDB00,
+  light-primary: hsl(20, 75%, 75%),
+  dark-primary:  hsl(20, 75%, 75%),
+  accent:        hsl(200, 75%, 70%),
+);
+
+// 有彩色
+$chromatic-colors: (
+  blue:   hsl(200, 70%, 70%),
+  green:  hsl(100, 70%, 70%),
+  red:    #F27070,
+  yellow: hsl( 50, 70%, 70%),
+);
+
+// 無彩色
+$achromatic-colors: (
+  white:            #FFFFFF,
+  extra-light-gray: #EFEFEF,
+  light-gray:       #CFCFCF,
+  gray:             #AFAFAF,
+  dark-gray:        #8F8F8F,
+  extra-dark-gray:  #6F6F6F,
+  black:            #4F4F4F,
+);
+
+// 背景色
+$background-colors: (
+  white:            achromatic-color(white),
+  extra-light-gray: achromatic-color(extra-light-gray),
+  light-gray:       achromatic-color(light-gray),
+  gray:             achromatic-color(gray),
+  dark-gray:        achromatic-color(dark-gray),
+  extra-dark-gray:  achromatic-color(extra-dark-gray),
+  black:            achromatic-color(black),
+);
+
+// テキスト色
+$text-colors: (
+  white:            achromatic-color(white),
+  extra-light-gray: achromatic-color(extra-light-gray),
+  light-gray:       achromatic-color(light-gray),
+  gray:             achromatic-color(gray),
+  dark-gray:        achromatic-color(dark-gray),
+  extra-dark-gray:  achromatic-color(extra-dark-gray),
+  black:            achromatic-color(black),
+);
+
+// 機能色
+$functional-colors: (
+  notice: chromatic-color(blue),
+  success: chromatic-color(green),
+  alert: chromatic-color(red),
+  warning: chromatic-color(yellow),
+);
+
+// ボーダー色
+$border-colors: (
+  white:            achromatic-color(white),
+  extra-light-gray: achromatic-color(extra-light-gray),
+  light-gray:       lighten(achromatic-color(light-gray), 10),
+  gray:             achromatic-color(gray),
+  dark-gray:        achromatic-color(dark-gray),
+  extra-dark-gray:  achromatic-color(extra-dark-gray),
+  black:            achromatic-color(black),
+);
+
+// その他の色
+$other-colors: (
+  hover: rgba(255, 255, 255, 0.075),
+);
