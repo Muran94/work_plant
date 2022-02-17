@@ -81,8 +81,8 @@ RSpec.describe Client, type: :model do
       it '有効な契約を1件返す' do
         client = create(:client)
         contracts = [
-          create(:contract, :active,   client: client),
-          create(:contract, :finished, client: client)
+          create(:contract, :active,  client: client),
+          create(:contract, :expired, client: client)
         ]
 
         expect(client.active_contract).to eq contracts.first
@@ -94,8 +94,8 @@ RSpec.describe Client, type: :model do
         # 有効な契約が存在するケース
         client = create(:client)
         contracts = [
-          create(:contract, :active,   client: client),
-          create(:contract, :finished, client: client)
+          create(:contract, :active,  client: client),
+          create(:contract, :expired, client: client)
         ]
 
         expect(client.contract_expired?).to be_falsy
@@ -103,8 +103,8 @@ RSpec.describe Client, type: :model do
         # 全ての契約が終了しているケース
         client = create(:client)
         contracts = [
-          create(:contract, :finished, client: client),
-          create(:contract, :finished, client: client)
+          create(:contract, :expired, client: client),
+          create(:contract, :expired, client: client)
         ]
 
         expect(client.contract_expired?).to be_truthy

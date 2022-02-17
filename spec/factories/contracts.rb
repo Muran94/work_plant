@@ -37,13 +37,11 @@ FactoryBot.define do
       expired_reason { nil }
     end
 
-     trait :finished do
+    trait :expired do
+      expired_at     { 1.week.ago }
       expired_reason { :finish }
-     end
+    end
 
-     trait :renewed do
-      expired_reason { :renew }
-     end
 
 
     ### Callbacks
